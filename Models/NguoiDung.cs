@@ -10,20 +10,20 @@ namespace QLDASV.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Mã số không được để trống")]
-        public string MaSo { get; set; } = string.Empty; // Sửa lỗi 'MaSo'
+        public string MaSo { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
-        public string TenDangNhap { get; set; } = string.Empty; // Sửa lỗi 'TenDangNhap'
+        public string TenDangNhap { get; set; } = string.Empty; 
 
         [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string MatKhau { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Họ tên không được để trống")]
-        public string HoTen { get; set; } = string.Empty; // Sửa lỗi 'HoTen'
+        public string HoTen { get; set; } = string.Empty;
 
-        public string? VaiTro { get; set; } // Ví dụ: Admin, Lecturer, Student
+        public string? VaiTro { get; set; }
 
-        public string? ChuyenNganh { get; set; } // Sửa lỗi 'ChuyenNganh'
+        public string? ChuyenNganh { get; set; }
 
         public string? Lop { get; set; }
 
