@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CNPM.Models.CauLacBo>
+@{
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="container-fluid mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-dark mb-1"><i class="fa-solid fa-clock-rotate-left me-2"></i> CLB DO TÔI QUẢN LÝ</h3>
+            <p class="text-muted mb-0">Theo dõi trạng thái phê duyệt các CLB bạn đã đăng ký.</p>
+        </div>
+        <a href="/CauLacBo/Create" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm"><i class="fa-solid fa-plus me-1"></i> Tạo CLB mới</a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success shadow-sm rounded-3"><i class="fa-solid fa-circle-check me-2"></i> @TempData["Success"]</div>
+    }
+
+    <div class="card border-0 shadow-sm rounded-4">
+        <table class="table table-hover align-middle bg-white text-center mb-0">
+            <thead class="bg-light text-muted small fw-bold text-uppercase">
+                <tr><th class="ps-4 text-start">Tên CLB</th><th>Lịch sinh hoạt</th><th>Thời gian</th><th>Trạng thái</th></tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-4 text-start fw-bold text-dark">@item.TenCLB</td>
+                            <td>@item.LichSinhHoat</td>
+                            <td>@item.ThoiGian</td>
+                            <td>
+                                @if (item.TrangThai == "Đã duyệt")
+                                {
+                                    <span class="badge bg-success">Đã duyệt</span>
+                                }
+                                else if (item.TrangThai == "Từ chối")
+                                {
+
+                                    <span class="badge bg-danger">Từ chối</span>
+                                }
+                                else
+                                {
+
+                                    <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="/CauLacBo/QuanLyThanhVien/@item.MaCLB" class="btn btn-sm btn-warning">
+                                    <i class="fa-solid fa-user-gear"></i> Quản lý thành viên
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="4" class="py-5 text-muted">Thầy/cô chưa đăng ký tạo CLB nào.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

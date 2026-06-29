@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CNPM.Models.BangDiem>
+@{
+    ViewData["Title"] = "Duyệt bảng điểm";
+    // Ép buộc dùng Layout của Admin để có menu trái và header chuẩn
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-0 mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-dark mb-1"><i class="fa-solid fa-clipboard-check text-warning me-2"></i> DUYỆT BẢNG ĐIỂM</h3>
+            <p class="text-muted mb-0">Kiểm tra và phê duyệt bảng điểm của học sinh trước khi cập nhật vào hệ thống.</p>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-light border-0 shadow-sm text-center py-5 rounded-4 text-muted">
+            <i class="fa-solid fa-inbox fs-1 mb-3 opacity-50"></i>
+            <p class="mb-0">Hiện tại không có bảng điểm nào đang chờ duyệt.</p>
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 text-center">
+                        <thead class="bg-light text-muted fw-bold text-uppercase small">
+                            <tr>
+                                <th class="ps-4 py-3 text-start">Học sinh</th>
+                                <th>LỚP</th>
+                                <th>Môn học</th>
+                                <th>Học kỳ</th>
+                                <th>Miệng</th>
+                                <th>15P</th>
+                                <th>45P</th>
+                                <th>Thi</th>
+                                <th class="text-primary">ĐTB</th>
+                                <th>Trạng thái</th>
+                                <th class="pe-4">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-bold text-start text-dark">@item.HocSinh.HoTen</td>
+                                    <td>
+                                        <span class="badge bg-secondary">@(item.HocSinh?.LopHoc?.TenLop ?? "Chưa xếp lớp")</span>
+                                    </td>
+                                    <td>@item.MonHoc.TenMon</td>
+                                    <td>@item.HocKy</td>
+                                    <td>@item.DiemMieng</td>
+                                    <td>@item.Diem15P</td>
+                                    <td>@item.Diem45P</td>
+                                    <td class="fw-bold">@item.DiemThi</td>
+                                    <td class="fw-bold text-danger fs-5">@item.DiemTrungBinh</td>
+                                    <td>
+                                        <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2">
+                                            @item.TrangThai
+                                        </span>
+                                    </td>
+                                    <td class="pe-4">
+                                        <form asp-action="XuLyDuyet" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@item.MaDiem" />
+                                            <button type="submit" name="action" value="Approve" class="btn btn-sm btn-success fw-bold shadow-sm px-3" title="Duyệt">
+                                                <i class="fa-solid fa-check"></i>
+                                            </button>
+                                            <button type="submit" name="action" value="Reject" class="btn btn-sm btn-danger fw-bold shadow-sm px-3" title="Từ chối">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

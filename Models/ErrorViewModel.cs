@@ -1,4 +1,4 @@
-namespace QLDASV.Models
+namespace CNPM.Models
 {
     public class ErrorViewModel
     {

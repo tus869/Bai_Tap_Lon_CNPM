@@ -1,0 +1,42 @@
+﻿@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+@model CNPM.Models.CauLacBo
+@{
+    ViewData["Title"] = "Thành lập Câu lạc bộ";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-primary mb-0"><i class="fa-solid fa-users-rectangle me-2"></i> THÀNH LẬP CÂU LẠC BỘ</h3>
+        <a href="/CauLacBo/DanhSachCuaToi" class="btn btn-outline-secondary rounded-pill px-4"><i class="fa-solid fa-arrow-left me-1"></i> Quay lại</a>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4 p-md-5">
+            <form asp-action="Create" method="post">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold">Tên Câu lạc bộ <span class="text-danger">*</span></label>
+                        <input asp-for="TenCLB" class="form-control form-control-lg" placeholder="Ví dụ: CLB Guitar, CLB Tin học..." required />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Lịch sinh hoạt (Thứ mấy?)</label>
+                        <input asp-for="LichSinhHoat" class="form-control" placeholder="Ví dụ: Thứ 3 và Thứ 6 hàng tuần" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Thời gian</label>
+                        <input asp-for="ThoiGian" class="form-control" placeholder="Ví dụ: 17h00 - 18h30" />
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Mô tả mục đích hoạt động <span class="text-danger">*</span></label>
+                    <textarea asp-for="MoTa" class="form-control" rows="4" placeholder="Nêu rõ mục đích, kế hoạch hoạt động..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 shadow"><i class="fa-solid fa-paper-plane me-2"></i> GỬI YÊU CẦU DUYỆT</button>
+            </form>
+        </div>
+    </div>
+</div>

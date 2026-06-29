@@ -1,0 +1,69 @@
+﻿@model CNPM.Models.BangDiem
+@{
+    ViewData["Title"] = "Hiệu chỉnh điểm số";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="container-fluid mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-primary mb-1"><i class="fa-solid fa-user-pen me-2"></i> HIỆU CHỈNH ĐIỂM SỐ</h3>
+            <p class="text-muted mb-0">Chỉnh sửa điểm thành phần. Hệ thống sẽ tự tính toán lại ĐTB và gửi lên Admin phê duyệt lại.</p>
+        </div>
+        <a href="/BangDiem/DanhSachDiem" class="btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm">
+            <i class="fa-solid fa-arrow-left me-2"></i> Quay lại lịch sử
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4 p-md-5">
+            <form asp-action="EditDiem" method="post" class="needs-validation" novalidate>
+
+                <h5 class="fw-bold text-dark mb-4 border-bottom pb-2">1. THÔNG TIN CHUNG</h5>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-muted">Học kỳ <span class="text-danger">*</span></label>
+                        <select asp-for="HocKy" class="form-select form-select-lg rounded-3 bg-light border-0" required>
+                            <option value="1">Học kỳ 1</option>
+                            <option value="2">Học kỳ 2</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-muted">Học sinh <span class="text-danger">*</span></label>
+                        <select asp-for="MaHS" class="form-select form-select-lg rounded-3 bg-light border-0" asp-items="ViewBag.DanhSachHocSinh" required></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-muted">Môn học <span class="text-danger">*</span></label>
+                        <select asp-for="MaMon" class="form-select form-select-lg rounded-3 bg-light border-0" asp-items="ViewBag.DanhSachMonHoc" required></select>
+                    </div>
+                </div>
+
+                <h5 class="fw-bold text-dark mb-4 border-bottom pb-2">2. ĐIỂM HIỆU CHỈNH</h5>
+                <div class="row g-4 mb-4">
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-muted">Điểm Miệng (Hệ số 1)</label>
+                        <input type="number" step="0.1" min="0" max="10" asp-for="DiemMieng" class="form-control form-control-lg rounded-3 border-primary border-opacity-25" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-muted">Điểm 15 Phút (Hệ số 1)</label>
+                        <input type="number" step="0.1" min="0" max="10" asp-for="Diem15P" class="form-control form-control-lg rounded-3 border-primary border-opacity-25" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-muted">Điểm 1 Tiết (Hệ số 2)</label>
+                        <input type="number" step="0.1" min="0" max="10" asp-for="Diem45P" class="form-control form-control-lg rounded-3 border-primary border-opacity-25" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-muted">Điểm Thi (Hệ số 3) <span class="text-danger">*</span></label>
+                        <input type="number" step="0.1" min="0" max="10" asp-for="DiemThi" class="form-control form-control-lg rounded-3 border-danger border-opacity-50" required />
+                    </div>
+                </div>
+
+                <form asp-action="EditDiem" method="post" class="needs-validation" novalidate>
+                    <input type="hidden" asp-for="MaDiem" />
+
+                    <button type="submit" class="btn btn-warning ...">LƯU & GỬI DUYỆT LẠI</button>
+                </form>
+            </form>
+        </div>
+    </div>
+</div>

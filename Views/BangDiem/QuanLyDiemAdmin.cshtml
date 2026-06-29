@@ -1,0 +1,162 @@
+﻿@model IEnumerable<CNPM.Models.BangDiem>
+@{
+    ViewData["Title"] = "Thống kê & Quản lý điểm - Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-0 mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-dark mb-1"><i class="fa-solid fa-chart-line text-success me-2"></i> THỐNG KÊ & QUẢN LÝ ĐIỂM</h3>
+            <p class="text-muted mb-0">Giám sát điểm số, xem điểm trung bình học tập theo từng lớp và từng môn học.</p>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-light">
+        <div class="card-body p-4">
+            <form method="get" action="/BangDiem/QuanLyDiemAdmin" class="row align-items-center g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold text-muted small">VUI LÒNG CHỌN LỚP HỌC ĐỂ XEM DỮ LIỆU:</label>
+                    <select name="maLop" asp-items="ViewBag.LopList" class="form-select form-select-lg rounded-3 border-primary" onchange="this.form.submit()">
+                        <option value="">-- Vui lòng chọn lớp --</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (ViewBag.MaLopSelected != null)
+    {
+        @if (Model != null && Model.Any())
+        {
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 text-center bg-primary bg-opacity-10 text-primary border-start border-5 border-primary py-3">
+                        <h2 class="fw-bold mb-0 text-dark">@((Model.Average(b => b.DiemTrungBinh) ?? 0).ToString("F2"))</h2>
+                        <span class="small fw-bold text-uppercase text-muted">ĐTB Chung Cả Lớp (Tất cả môn)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-header bg-white border-0 py-3">
+                            <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-book-open text-info me-2"></i> ĐTB Theo Từng Môn</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle text-center mb-0">
+                                    <thead class="bg-light text-muted small fw-bold">
+                                        <tr>
+                                            <th class="text-start ps-3">Tên Môn học</th>
+                                            <th>ĐTB Lớp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var thongKeTheoMon = Model.GroupBy(b => b.MonHoc.TenMon)
+                                                                      .Select(g => new { TenMon = g.Key, Avg = g.Average(b => b.DiemTrungBinh) });
+                                            foreach (var mon in thongKeTheoMon)
+                                            {
+                                                <tr>
+                                                    <td class="text-start ps-3 fw-bold text-dark">@mon.TenMon</td>
+                                                    <td class="fw-bold text-primary">@((mon.Avg ?? 0).ToString("F2"))</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm rounded-4 mt-4">
+                        <div class="card-header bg-white border-bottom-0 py-3">
+                            <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-table-list text-primary me-2"></i> BẢNG TỔNG HỢP ĐIỂM CHI TIẾT CỦA LỚP</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered align-middle text-center mb-0" style="white-space: nowrap;">
+                                    <thead class="bg-dark text-white small fw-bold">
+                                        <tr>
+                                            <th class="py-3">STT</th>
+                                            <th class="text-start">Họ và Tên</th>
+                                            <th>Ngày Sinh</th>
+                                            <th>Giới tính</th>
+                                            <th>SĐT / Liên hệ</th>
+
+                                            @{
+                                                // Lọc ra các môn học đang có điểm trong lớp này
+                                                var dsMonHoc = Model.Select(x => x.MonHoc.TenMon).Distinct().OrderBy(x => x).ToList();
+                                                foreach (var mon in dsMonHoc)
+                                                {
+                                                    <th class="text-info">@mon</th>
+                                                }
+                                            }
+
+                                            <th class="bg-warning text-dark fs-6">ĐTB Chung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            // Nhóm dữ liệu theo từng Học sinh
+                                            var hocSinhGroups = Model.GroupBy(x => x.HocSinh);
+                                            int stt = 1;
+
+                                            foreach (var hsGroup in hocSinhGroups)
+                                            {
+                                                var hs = hsGroup.Key; // Lấy thông tin học sinh
+                                                <tr>
+                                                    <td class="text-muted fw-bold">@(stt++)</td>
+                                                    <td class="text-start fw-bold text-dark">@hs.HoTen</td>
+                                                    <td>@(hs.NgaySinh?.ToString("dd/MM/yyyy") ?? "---")</td>
+                                                    <td>@(hs.GioiTinh ?? "---")</td>
+                                                    <td>@hs.SoDienThoai</td>
+
+                                                    @foreach (var mon in dsMonHoc)
+                                                    {
+                                                        // Tìm xem học sinh này có điểm môn đó không
+                                                        var diemMon = hsGroup.FirstOrDefault(x => x.MonHoc.TenMon == mon);
+                                                        if (diemMon != null)
+                                                        {
+                                                            <td class="fw-bold text-primary">@diemMon.DiemTrungBinh</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td class="text-muted opacity-50">-</td>
+                                                        }
+                                                    }
+
+                                                    <td class="fw-bold text-danger bg-light">
+                                                        @((hsGroup.Average(x => x.DiemTrungBinh) ?? 0).ToString("F2"))
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-light border shadow-sm text-center py-5 rounded-4 text-muted">
+                <i class="fa-solid fa-folder-open fs-1 mb-3 opacity-50 text-warning"></i>
+                <p class="mb-0 fw-bold">Lớp này hiện chưa có điểm số nào được Admin phê duyệt công bố!</p>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="text-center py-5 text-muted">
+            <i class="fa-solid fa-arrow-pointer fs-1 mb-3 opacity-25"></i>
+            <p>Vui lòng chọn một lớp học ở bộ lọc phía trên để hiển thị thống kê điểm.</p>
+        </div>
+    }
+</div>

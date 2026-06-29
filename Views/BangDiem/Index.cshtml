@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CNPM.Models.HocSinh>
+@{
+    ViewData["Title"] = "Quản lý Điểm số";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold text-primary border-bottom pb-3">
+                <i class="fa-solid fa-pen-to-square me-2"></i> DANH SÁCH HỌC SINH CẦN NHẬP ĐIỂM
+            </h2>
+            <p class="text-muted mt-2">Giáo viên chọn học sinh từ danh sách để tiến hành cập nhật điểm số các môn.</p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 text-center">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th>Mã HS</th>
+                            <th class="text-start">Họ và Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Giới tính</th>
+                            <th>Lớp</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="6" class="text-muted py-5">Chưa có học sinh nào trong hệ thống.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="fw-bold text-secondary">@item.MaHS</td>
+                                    <td class="text-start fw-bold text-dark">@item.HoTen</td>
+                                    <td>@(item.NgaySinh?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                    <td>@item.GioiTinh</td>
+                                    <td>
+                                        @if (item.LopHoc != null)
+                                        {
+                                            <span class="badge bg-info text-dark">@item.LopHoc.TenLop</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Chưa xếp lớp</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="/BangDiem/NhapDiem?maHS=@item.MaHS" class="btn btn-sm btn-primary fw-bold shadow-sm">
+                                            <i class="fa-solid fa-keyboard me-1"></i> Nhập điểm
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

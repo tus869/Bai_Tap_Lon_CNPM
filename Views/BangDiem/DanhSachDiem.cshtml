@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CNPM.Models.BangDiem>
+@{
+    ViewData["Title"] = "Danh sách điểm đã nhập";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="container-fluid mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-primary mb-1"><i class="fa-solid fa-list-check me-2"></i> LỊCH SỬ NHẬP ĐIỂM</h3>
+            <p class="text-muted mb-0">Xem danh sách, kiểm tra tiến độ duyệt và chỉnh sửa lại các đầu điểm đã nhập.</p>
+        </div>
+        <a href="/BangDiem/NhapDiem" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
+            <i class="fa-solid fa-plus me-2"></i> Nhập điểm mới
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 rounded-3" role="alert">
+            <i class="fa-solid fa-circle-check me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 text-center">
+                    <thead class="bg-light text-muted fw-bold text-uppercase small">
+                        <tr>
+                            <th class="ps-4 py-3 text-start">Học sinh</th>
+                            <th>Môn học</th>
+                            <th>Học kỳ</th>
+                            <th>Miệng</th>
+                            <th>15 Phút</th>
+                            <th>1 Tiết</th>
+                            <th>Điểm Thi</th>
+                            <th class="text-primary">ĐTB</th>
+                            <th>Trạng thái</th>
+                            <th class="pe-4">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 text-start fw-bold text-dark">@item.HocSinh.HoTen</td>
+                                    <td>@item.MonHoc.TenMon</td>
+                                    <td>Học kỳ @item.HocKy</td>
+                                    <td>@(item.DiemMieng?.ToString() ?? "-")</td>
+                                    <td>@(item.Diem15P?.ToString() ?? "-")</td>
+                                    <td>@(item.Diem45P?.ToString() ?? "-")</td>
+                                    <td class="fw-bold">@(item.DiemThi?.ToString() ?? "-")</td>
+                                    <td class="fw-bold text-danger fs-5">@item.DiemTrungBinh</td>
+                                    <td>
+                                        @if (item.TrangThai == "Chờ duyệt")
+                                        {
+                                            <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 border border-warning border-opacity-25">Chờ duyệt</span>
+                                        }
+                                        else if (item.TrangThai == "Đã duyệt")
+                                        {
+                                            <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 border border-success border-opacity-25">Đã duyệt</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 border border-danger border-opacity-25">Từ chối</span>
+                                        }
+                                    </td>
+                                    <td class="pe-4">
+                                        <a href="/BangDiem/EditDiem/@item.MaDiem" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                                            <i class="fa-solid fa-pen-to-square me-1"></i> Sửa lại
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="10" class="text-center py-5 text-muted">
+                                    <i class="fa-solid fa-box-open fs-2 mb-2"></i><br>Thầy/cô chưa thực hiện nhập đầu điểm nào.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

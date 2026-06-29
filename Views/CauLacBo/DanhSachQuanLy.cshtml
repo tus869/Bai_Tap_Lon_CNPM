@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CNPM.Models.CauLacBo>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <h3 class="fw-bold mb-4">QUẢN LÝ CÂU LẠC BỘ</h3>
+    <table class="table table-hover bg-white shadow-sm">
+        <thead class="table-dark">
+            <tr><th>Tên CLB</th><th>GV Phụ trách</th><th>Trạng thái</th><th>Thao tác</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TenCLB</td>
+                    <td>@item.GiaoVienPhuTrach?.HoTen</td>
+                    <td>@item.TrangThai</td>
+                    <td>
+                        <a href="/CauLacBo/DanhSachThanhVienToanTruong/@item.MaCLB" class="btn btn-info btn-sm">Xem thành viên</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

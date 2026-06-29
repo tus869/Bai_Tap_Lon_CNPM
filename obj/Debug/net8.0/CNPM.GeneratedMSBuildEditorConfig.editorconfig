@@ -1,0 +1,216 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EntryPointFilePath = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CNPM
+build_property.RootNamespace = CNPM
+build_property.ProjectDir = C:\Users\TU\OneDrive\Desktop\hoc\backend\CNPM\CNPM\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\TU\OneDrive\Desktop\hoc\backend\CNPM\CNPM
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Auth/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/ChiTietDiemHocSinh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cQ2hpVGlldERpZW1Ib2NTaW5oLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/DanhSachDiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cRGFuaFNhY2hEaWVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/DuyetDiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cRHV5ZXREaWVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/EditDiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cRWRpdERpZW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/NhapDiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cTmhhcERpZW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/QuanLyDiemAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cUXVhbkx5RGllbUFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/QuanLyThanhVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cUXVhbkx5VGhhbmhWaWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/BangDiem/XemDiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ0RpZW1cWGVtRGllbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/DanhSachCuaToi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cRGFuaFNhY2hDdWFUb2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/DanhSachQuanLy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cRGFuaFNhY2hRdWFuTHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/DanhSachThanhVienToanTruong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cRGFuaFNhY2hUaGFuaFZpZW5Ub2FuVHJ1b25nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/DuyetCLB.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cRHV5ZXRDTEIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/CauLacBo/QuanLyThanhVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1TGFjQm9cUXVhbkx5VGhhbmhWaWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/GiaoVien/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhb1ZpZW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/GiaoVien/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhb1ZpZW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/GiaoVien/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhb1ZpZW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/GiaoVien/GocGiaoVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhb1ZpZW5cR29jR2lhb1ZpZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/GiaoVien/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhb1ZpZW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/GioiThieu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvaVRoaWV1XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/HocSinh/GocHocSinh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9jU2luaFxHb2NIb2NTaW5oLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/HocSinh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9jU2luaFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/HocSinh/ThongTinCaNhan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9jU2luaFxUaG9uZ1RpbkNhTmhhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/HoSoTuyenSinh/DangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9Tb1R1eWVuU2luaFxEYW5nS3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/HoSoTuyenSinh/DanhSachDuyet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9Tb1R1eWVuU2luaFxEYW5oU2FjaER1eWV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/HoSoTuyenSinh/ThongBaoDuyet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9Tb1R1eWVuU2luaFxUaG9uZ0Jhb0R1eWV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/LopHoc/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/LopHoc/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/LopHoc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Shared/_TeacherLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UZWFjaGVyTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Teacher/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Teacher/LopCuaToi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxMb3BDdWFUb2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/TinTuc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/TU/OneDrive/Desktop/hoc/backend/CNPM/CNPM/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-rnj5661rbq

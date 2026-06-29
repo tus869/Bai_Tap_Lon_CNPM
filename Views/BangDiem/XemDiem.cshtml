@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CNPM.Models.BangDiem>
+@{
+    ViewData["Title"] = "Học sinh - Bảng điểm cá nhân";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white py-3">
+            <h4 class="mb-0 fw-bold text-center"><i class="fa-solid fa-graduation-cap me-2"></i> KẾT QUẢ HỌC TẬP</h4>
+        </div>
+        <div class="card-body p-4">
+            
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger text-center">@ViewBag.Error</div>
+            }
+            else
+            {
+                <div class="mb-4">
+                    <h5 class="fw-bold text-primary">Học sinh: <span class="text-dark">@ViewBag.TenHocSinh</span></h5>
+                    <p class="text-muted small"><em>* Chỉ hiển thị các điểm số đã được hệ thống Nhà trường phê duyệt.</em></p>
+                </div>
+
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-info text-center py-4">
+                        Hiện tại chưa có dữ liệu điểm số nào được công bố cho bạn.
+                    </div>
+                }
+                else
+                {
+                    var groupedByKy = Model.GroupBy(m => m.HocKy).OrderBy(g => g.Key);
+
+                    foreach (var group in groupedByKy)
+                    {
+                        <h5 class="fw-bold mt-4 mb-3 border-start border-4 border-warning ps-2">Học kỳ @group.Key</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle text-center">
+                                <thead class="table-light text-secondary">
+                                    <tr>
+                                        <th class="text-start">Môn học</th>
+                                        <th>Điểm Miệng</th>
+                                        <th>15 Phút</th>
+                                        <th>45 Phút</th>
+                                        <th>Điểm Thi</th>
+                                        <th class="bg-light fw-bold text-danger">Trung Bình Môn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var diem in group)
+                                    {
+                                        <tr>
+                                            <td class="fw-bold text-start text-dark">@diem.MonHoc.TenMon</td>
+                                            <td>@(diem.DiemMieng?.ToString("0.0") ?? "-")</td>
+                                            <td>@(diem.Diem15P?.ToString("0.0") ?? "-")</td>
+                                            <td>@(diem.Diem45P?.ToString("0.0") ?? "-")</td>
+                                            <td class="fw-bold">@(diem.DiemThi?.ToString("0.0") ?? "-")</td>
+                                            <td class="fw-bold text-danger fs-5 bg-light">@(diem.DiemTrungBinh?.ToString("0.0") ?? "-")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model CNPM.Models.CauLacBo
+@{
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h3 class="fw-bold">Danh sách thành viên: @Model.TenCLB</h3>
+
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">STT</th>
+                <th>Họ tên học sinh</th>
+                <th>Lớp</th>
+                <th class="text-center">Trạng thái</th>
+                <th class="text-center">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int stt = 1;
+            }
+            @if (Model.ThamGiaCLBs != null && Model.ThamGiaCLBs.Any())
+            {
+                @foreach (var item in Model.ThamGiaCLBs)
+                {
+                    <tr>
+                        <td class="text-center">@(stt++)</td>
+                        <td>@item.HocSinh?.HoTen</td>
+                        <td>@item.HocSinh?.LopHoc?.TenLop</td>
+                        <td class="text-center">
+                            @if (item.TrangThai == "Chờ duyệt")
+                            {
+                                <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">@item.TrangThai</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center gap-2">
+                                @if (item.TrangThai == "Chờ duyệt")
+                                {
+                                    <form asp-action="DuyetThanhVien" method="post">
+                                        <input type="hidden" name="maHS" value="@item.MaHS" />
+                                        <input type="hidden" name="maCLB" value="@item.MaCLB" />
+                                        <button type="submit" class="btn btn-success btn-sm">Duyệt</button>
+                                    </form>
+                                }
+
+                                <form asp-action="XoaThanhVien" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa/từ chối học sinh này khỏi CLB?');">
+                                    <input type="hidden" name="maHS" value="@item.MaHS" />
+                                    <input type="hidden" name="maCLB" value="@item.MaCLB" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted">Chưa có học sinh nào đăng ký tham gia câu lạc bộ này.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

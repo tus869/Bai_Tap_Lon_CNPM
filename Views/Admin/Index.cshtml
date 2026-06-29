@@ -1,0 +1,408 @@
+@{
+    ViewData["Title"] = "Bảng điều khiển";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    /* ===== RESET & BASE ===== */
+    body {
+        background-color: #f0f2f5;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ===== TOPBAR ===== */
+    .topbar {
+        background: #fff;
+        border-bottom: 1px solid #e8eaed;
+        padding: 14px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .topbar-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .topbar-title .page-icon {
+        width: 38px;
+        height: 38px;
+        background: #f0f2f5;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-size: 1.1rem;
+    }
+
+    .topbar-title h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1a1d23;
+        margin: 0;
+    }
+
+    .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .topbar-right .welcome-text {
+        font-size: 0.88rem;
+        color: #555;
+        margin-right: 8px;
+    }
+
+    .topbar-right .welcome-text strong {
+        color: #1a1d23;
+    }
+
+    .topbar-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1.5px solid #e0e3e8;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-size: 1rem;
+    }
+
+    .topbar-btn:hover {
+        background: #f0f2f5;
+    }
+
+    /* ===== STAT CARDS (TOP ROW) ===== */
+    .stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 20px;
+    }
+
+    .stat-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 22px 24px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+        border: 1px solid #eef0f3;
+        transition: box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    }
+
+    .stat-icon-wrap {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .stat-icon-wrap img,
+    .stat-icon-wrap i {
+        font-size: 1.9rem;
+    }
+
+    .stat-icon-wrap.red    { background: #fff0ee; color: #e8462a; }
+    .stat-icon-wrap.blue   { background: #eef4ff; color: #3b7fef; }
+    .stat-icon-wrap.yellow { background: #fffbe6; color: #d4a017; }
+
+    .stat-info .value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1a1d23;
+        line-height: 1.1;
+    }
+
+    .stat-info .label {
+        font-size: 0.92rem;
+        color: #737b8b;
+        margin-top: 2px;
+    }
+
+    .stat-info .sub {
+        font-size: 0.8rem;
+        color: #22a55b;
+        margin-top: 6px;
+        font-weight: 500;
+    }
+
+    .stat-info .sub.neutral {
+        color: #22a55b;
+    }
+
+    /* ===== QUICK ACCESS CARDS ===== */
+    .quick-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 20px;
+    }
+
+    .quick-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 22px 24px;
+        border: 1px solid #eef0f3;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+        transition: box-shadow 0.2s;
+    }
+
+    .quick-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    }
+
+    .quick-card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+
+    .quick-icon-wrap {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+
+    .quick-icon-wrap.red    { background: #fff0ee; color: #e8462a; }
+    .quick-icon-wrap.blue   { background: #eef4ff; color: #3b7fef; }
+    .quick-icon-wrap.yellow { background: #fffbe6; color: #d4a017; }
+
+    .quick-card-header h6 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a1d23;
+        margin: 0;
+    }
+
+    .quick-card p {
+        font-size: 0.83rem;
+        color: #737b8b;
+        line-height: 1.55;
+        margin-bottom: 16px;
+        min-height: 42px;
+    }
+
+    .btn-quick {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 18px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .btn-quick:hover {
+        opacity: 0.87;
+        transform: translateX(2px);
+    }
+
+    .btn-quick.red    { background: #e8462a; color: #fff; }
+    .btn-quick.blue   { background: #3b7fef; color: #fff; }
+    .btn-quick.yellow { background: #f5c518; color: #1a1d23; }
+
+    /* ===== ACTIVITY PANEL ===== */
+    .activity-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 24px;
+        border: 1px solid #eef0f3;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    .activity-card h5 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #1a1d23;
+        margin-bottom: 18px;
+    }
+
+    .activity-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .activity-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .activity-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .activity-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 0.95rem;
+    }
+
+    .activity-icon.person { background: #eef4ff; color: #3b7fef; }
+    .activity-icon.calendar { background: #fffbe6; color: #d4a017; }
+
+    .activity-text {
+        font-size: 0.87rem;
+        color: #3a3f4b;
+        line-height: 1.5;
+    }
+</style>
+
+    <!-- MAIN CONTENT -->
+    <div class="p-4">
+
+        <!-- STAT CARDS -->
+        <div class="stat-row">
+            <!-- Tổng số giáo viên -->
+            <div class="stat-card">
+                <div class="stat-icon-wrap red">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="label">Tổng số giáo viên</div>
+                    <div class="value">30</div>
+                    <div class="sub">+2 từ tháng trước</div>
+                </div>
+            </div>
+
+            <!-- Lớp học hiện tại -->
+            <div class="stat-card">
+                <div class="stat-icon-wrap blue">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="label">Lớp học hiện tại</div>
+                    <div class="value">22</div>
+                    <div class="sub">+5 từ tháng trước</div>
+                </div>
+            </div>
+
+            <!-- Yêu cầu duyệt điểm -->
+            <div class="stat-card">
+                <div class="stat-icon-wrap yellow">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="label">Yêu cầu duyệt điểm</div>
+                    <div class="value">7</div>
+                    <div class="sub neutral">Mới</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK ACCESS CARDS -->
+    <div class="quick-row">
+        <div class="quick-card">
+            <div class="quick-card-header">
+                <div class="quick-icon-wrap red">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <h6>Quản lý giáo viên</h6>
+            </div>
+            <p>Thêm mới sửa thông tin, xóa và tự động cập nhật tài khoản cho giáo viên.</p>
+            <a href="/GiaoVien/Index" class="btn-quick red">
+                Truy cập nhanh <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <div class="quick-card-header">
+                <div class="quick-icon-wrap blue">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+                <h6>Quản lý lớp học</h6>
+            </div>
+            <p>Tạo danh sách lớp học mới để làm cơ sở xếp lớp tuyển sinh cho học sinh.</p>
+            <a href="/LopHoc/Index" class="btn-quick blue">
+                Truy cập nhanh <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <div class="quick-card-header">
+                <div class="quick-icon-wrap yellow">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h6>Duyệt bảng điểm</h6>
+            </div>
+            <p>Kiểm tra và phê duyệt điểm số do các giáo viên bộ môn nhập lên hệ thống.</p>
+            <a href="/BangDiem/DuyetDiem" class="btn-quick yellow">
+                Truy cập nhanh <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+            <!-- Duyệt bảng điểm -->
+            <div class="quick-card">
+                <div class="quick-card-header">
+                    <div class="quick-icon-wrap yellow">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h6>Duyệt bảng điểm</h6>
+                </div>
+                <p>Kiểm tra và phê duyệt điểm số do các giáo viên bộ môn nhập lên hệ thống.</p>
+                <a href="#" class="btn-quick yellow">
+                    Truy cập nhanh <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+<div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-4">
+        <div class="d-flex align-items-center mb-3">
+            <div class="bg-info bg-opacity-10 text-info rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                <i class="fa-solid fa-users-rectangle"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-0">Duyệt Câu lạc bộ</h5>
+        </div>
+        <p class="text-muted mb-4">Kiểm duyệt và cấp phép thành lập các câu lạc bộ ngoại khóa do giáo viên đề xuất.</p>
+        <a href="/CauLacBo/DuyetCLB" class="btn btn-info text-white fw-bold px-4 rounded-pill shadow-sm">
+            Truy cập nhanh <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+    </div>
+</div>
+
+    </div>
+</div>
